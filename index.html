@@ -44,10 +44,46 @@
       .footer__list li:last-child {
         margin-right: 0;
       }
+      .button {
+        /* width: 100%; */
+        background-color: red;
+        width: 200px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        border: 0;
+      }
+      .button.bbb {
+        background-color: blue;
+      }
+
+      .button.ccc {
+        background-color: pink;
+      }
+
+      .button.ddd {
+        background-color: yellow;
+      }
+
+      .user_list {
+        background-color: green;
+      }
     </style>
     <div class="header">
-      <div class="header__logo">Youtube</div>
-      <div class="header__login">LOGIN</div>
+      <div class="header__logo jsLogo">Youtube</div>
+      <div class="header__login jsLoginText">LOGIN</div>
+    </div>
+
+    <div class="contents">
+      <button class="button ccc" onClick="aaaa()">ログイン</button>
+      <br />
+      <button class="button bbb" onClick="userList()">ユーザー見る</button>
+      <br />
+      <div class="userArea"></div>
     </div>
     <div class="footer">
       <ul class="footer__list">
@@ -59,5 +95,58 @@
         <li>ビジネス</li>
       </ul>
     </div>
+    <script>
+      function aaaa() {
+        console.log("aaaaaaa");
+        // document.querySelector(".jsLoginText").innerHTML = "KIMSUNGWON";
+        const aaa = document.querySelector(".jsLoginText");
+        aaa.innerHTML = "ajlasjlkfdaj";
+
+        const bbb = document.querySelector(".jsLogo");
+        bbb.style.backgroundColor = "yellow";
+      }
+
+      function userList() {
+        const narimoto = [
+          {
+            id: 0,
+            name: "古賀",
+            tel: "080-3333-4444",
+            address: "埼玉県",
+          },
+          {
+            id: 1,
+            name: "杉山",
+            tel: "090-1111-2222",
+            address: "東京都",
+          },
+          {
+            id: 2,
+            name: "相馬",
+            tel: "070-5555-9999",
+            address: "東京都",
+          },
+          {
+            id: 3,
+            name: "キム",
+            tel: "090-5555-9999",
+            address: "東京都",
+          },
+        ];
+
+        const result = narimoto.map((n) => {
+          return `
+            <div class="user_list">
+              <div>${n.name}</div>
+              <div>${n.tel}</div>
+              <div>${n.address}</div>
+            </div>
+            <br />
+          `;
+        });
+
+        document.querySelector(".userArea").innerHTML = result.join("");
+      }
+    </script>
   </body>
 </html>
